@@ -1,3 +1,7 @@
+include .env
+include ./ml/.env
+export
+
 .PHONY: venv
 CLI = ./.venv/bin/python3 
 PIP = ./.venv/bin/pip3
@@ -47,3 +51,6 @@ ml-predict:
 ml-evaluate:
 	${CLI} ${PATH_EVALUATE}
 
+# Running script for updating datetime in dataset
+update-time:
+	${CLI} ml/scripts/update_time.py
