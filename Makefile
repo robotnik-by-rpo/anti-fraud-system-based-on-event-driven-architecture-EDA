@@ -20,11 +20,19 @@ venv:
 	python3 -m venv .venv
 
 # Installing ml package for ML on CPU
-ml-lib-cpu: venv
+ml-lib-cpu: venv ml-model-cpu
 	${PIP} install torch torchvision torchaudio   
 
+# Installing model for CPU
+ml-model-cpu:
+	${pip} install mamba-ssm --no-build-isolation
+
+# Installing model for GPU
+ml-model-gpu:
+	MAMBA_KEEP_CUDA_BUILD=TRUE ${PIP} install mamba-ssm --no-build-isolation
+
 # Installing ml package for ML on CUDA
-ml-lib-cuda: venv
+ml-lib-cuda: venv ml-model-gpu
 	${PIP} install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/${CUDA}   
 
 # Running train model
