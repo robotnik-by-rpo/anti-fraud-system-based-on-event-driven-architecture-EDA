@@ -24,15 +24,19 @@ venv:
 	python3 -m venv .venv
 
 # Installing ml package for ML on CPU
-ml-lib-cpu: venv ml-model-cpu
+ml-lib-cpu: 
 	${PIP} install torch torchvision torchaudio   
 
+# Installing utils for mamba
+ml-util-mamba: venv 
+	${PIP} install --upgrade pip setuptools wheel
+
 # Installing model for CPU
-ml-model-cpu:
-	${pip} install mamba-ssm --no-build-isolation
+ml-model-cpu: ml-util-mamba ml-lib-cpu
+	${PIP} install mamba-ssm --no-build-isolation
 
 # Installing model for GPU
-ml-model-gpu:
+ml-model-gpu: ml-util-mamba ml-lib-cuda
 	MAMBA_KEEP_CUDA_BUILD=TRUE ${PIP} install mamba-ssm --no-build-isolation
 
 # Installing ml package for ML on CUDA
