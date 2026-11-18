@@ -1,1 +1,6 @@
 .env
+.venv
+# /ml/data/source/test_identity.csv
+# /ml/data/source/test_transaction.csv
+# /ml/data/source/train_identity.csv
+# /ml/data/source/train_transaction.csv
