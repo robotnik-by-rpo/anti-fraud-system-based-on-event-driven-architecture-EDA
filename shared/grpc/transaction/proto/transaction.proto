@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package input;
+
+option go_package = "sending-transaction-service";
+
+service SendingTransactionService{
+    rpc ProcessingTransaction(TransactionRequest) returns ();
+}
+
+message TransactionRequest{
+    Transaction transaction = 1;
+    Identity identity 2;
+}
+
+message TransactionResponse{
+    uint64 transaction_id = 1;
+    bool is_fraud = 2;
+    double fraud_score = 3;
+}
+
+message Transaction {
+    
+}
+
+message Identity{
+    uint64 transaction_id = 1;
+    double id01 = 2;
+    double id02 = 3;
+    double id03 = 4;
+    double id04 = 5;
+    double id05 = 6;
+    double id06 = 7;
+    double id07 = 8;
+    double id08 = 9;
+    double id09 = 10;    
+    double id10 = 11;
+    double id11 = 12;
+    double id12 = 13;    
+    double id13 = 14;
+    double id14 = 15;
+    double id15 = 16;
+}
